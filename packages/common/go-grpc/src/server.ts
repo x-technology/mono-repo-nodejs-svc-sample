@@ -44,12 +44,15 @@ function serviceRequest<I, R>(fn: Input<I, R>) {
     try {
       const currentSpan = api.trace.getSpan(api.context.active());
       // display traceid in the terminal
-      console.log(`traceid: ${currentSpan.spanContext().traceId}`);
+      if (currentSpan) {
+        console.log(`traceid: ${currentSpan.spanContext().traceId}`);
+      }
+
       const span = tracer.startSpan('server:method()', {
         kind: 1, // server
         attributes: { key: 'value' },
       });
-      span.addEvent(`invoking method to ${call.request.getName()}`);
+      span.addEvent(`invoking method to ${call.request}`);
 
       const result = await fn(call.request);
       callback(null, result);

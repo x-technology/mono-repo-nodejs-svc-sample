@@ -74,7 +74,6 @@ const demo1ServerHost = 'localhost:50051'
 const demo2ServerHost = 'localhost:50052'
 const client1 = new demo.DemoClient(demo1ServerHost, createInsecure());
 const client2 = new demo.DemoClient(demo2ServerHost, createInsecure());
-undefined
 client1.Ping(new demo.PingRequest({ payload: 'ping' }))
 client2.Ping(new demo.PingRequest({ payload: 'ping' }))
 
