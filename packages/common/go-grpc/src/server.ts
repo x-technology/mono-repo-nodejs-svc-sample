@@ -10,6 +10,8 @@ import {
   Metadata,
   ChannelCredentials,
 } from '@grpc/grpc-js';
+import { trace, api } from '@common/tracer';
+const tracer = trace('server');
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires,import/no-extraneous-dependencies
 const protoLoader = require('@grpc/proto-loader');
@@ -40,8 +42,19 @@ function serviceRequest<I, R>(fn: Input<I, R>) {
     delete obj['req'];
 
     try {
+      const currentSpan = api.trace.getSpan(api.context.active());
+      // display traceid in the terminal
+      console.log(`traceid: ${currentSpan.spanContext().traceId}`);
+      const span = tracer.startSpan('server:method()', {
+        kind: 1, // server
+        attributes: { key: 'value' },
+      });
+      span.addEvent(`invoking method to ${call.request.getName()}`);
+
       const result = await fn(call.request);
       callback(null, result);
+
+      span.end();
     } catch (error) {
       callback(errorToStatus(error));
     }
