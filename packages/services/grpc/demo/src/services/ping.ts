@@ -1,5 +1,5 @@
 import { demo } from '@common/go-grpc';
-import { trace } from '@common/tracer';
+import { trace, api } from '@common/tracer';
 
 const tracer = trace('demo');
 
@@ -9,12 +9,20 @@ export const ping = async (
 ): Promise<demo.PingResponse> => {
   const { payload } = grpcRequest;
 
-  const span = tracer.startSpan('ping begin');
-  span.end();
+  const currentSpan = api.trace.getSpan(api.context.active());
+  console.log('currentSpan:', currentSpan)
+  // display traceid in the terminal
+  console.log(`traceid: ${currentSpan.spanContext().traceId}`);
+
+  const span = tracer.startSpan('demo:ping()', {
+    kind: 1, // server
+  });
+  span.addEvent(`demo:ping() to ${payload}`);
+  setTimeout(() => {
+    span.end();
+  }, 500)
 
   return new demo.PingResponse({
     payload: `${payload} - pong`,
   });
-
-  
 };
