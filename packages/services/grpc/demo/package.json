@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/runtime": "^7.6.3",
     "@common/go-grpc": "^1.0.0",
+    "@common/tracer": "^1.0.0",
     "esm": "^3.2.25",
     "nodemon": "^1.19.4",
     "regenerator-runtime": "^0.13.3",
