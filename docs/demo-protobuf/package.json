@@ -1,0 +1,15 @@
+{
+  "name": "demo-protobuf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "protoc --js_out=import_style=commonjs,binary:. prices.proto"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "google-protobuf": "^3.19.3"
+  }
+}

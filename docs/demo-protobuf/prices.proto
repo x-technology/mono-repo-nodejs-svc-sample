@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message Price {
+  string Date = 1;
+  float Price = 2;
+  float Open = 3;
+  float High = 4;
+  float ChangePercentFromLastMonth = 5;
+  string Volume = 6;
+}
+
+message Prices {
+  repeated Price prices = 1;
+}
+
+// package asd;
+
+// service idk {
+//   rpc whatstaht(Price) returns (Price);
+// }
