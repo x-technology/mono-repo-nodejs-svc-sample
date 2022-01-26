@@ -51,7 +51,7 @@ function serviceRequest<I, R>(fn: Input<I, R>) {
 interface LoadProtoOptions {
   path: string,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  options: { [name: string]: any },
+  options?: { [name: string]: any },
   package: string,
   service: string,
 }
@@ -79,7 +79,15 @@ class Server {
     this.server = new GrpcServer();
     this.impl = {};
 
-    const definition = protoLoader.loadSync(protoOptions.path, protoOptions.options);
+    const options = {
+      keepCase: true,
+      longs: String,
+      enums: String,
+      defaults: true,
+      oneofs: true,
+      ...protoOptions.options && protoOptions.options,
+    };
+    const definition = protoLoader.loadSync(protoOptions.path, options);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const grpcObject: any = loadPackageDefinition(definition);
     this.service = grpcObject[protoOptions.package][protoOptions.service].service;

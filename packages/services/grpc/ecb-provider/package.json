@@ -1,8 +1,12 @@
 {
   "private": true,
-  "name": "@grpc/demo",
+  "name": "@grpc/ecb-provider",
   "version": "1.0.0",
-  "description": "This is a demo service to demonstrate gRPC usage",
+  "author": {
+    "email": "iam@andrew.red",
+    "name": "Andrew Reddikh"
+  },
+  "description": "This is a Europe Central Bank rates provider",
   "license": "MIT",
   "engines": {
     "node": ">= 10.13 <=16"
@@ -16,8 +20,9 @@
   "dependencies": {
     "@babel/runtime": "^7.6.3",
     "@common/go-grpc": "^1.0.0",
-    "@common/tracer": "^1.0.0",
     "esm": "^3.2.25",
+    "fast-xml-parser": "^4.0.1",
+    "node-fetch": "2",
     "nodemon": "^1.19.4",
     "regenerator-runtime": "^0.13.3",
     "tslib": "~1.10.0"

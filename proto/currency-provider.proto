@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package currencyProvider;
+
+service CurrencyProvider {
+  rpc GetRates(currencyProvider.GetRatesRequest) returns (currencyProvider.GetRatesResponse) {}
+}
+
+message GetRatesRequest {}
+
+message GetRatesResponse {
+  string baseCurrency = 1;
+
+  message ExchangeRate {
+    string currency = 1;
+    double rate = 2;
+  }
+
+  repeated ExchangeRate rates = 3;
+}

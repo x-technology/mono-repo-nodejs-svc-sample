@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.15.0",
-    "@types/node": "^15.12.4",
+    "@types/node": "^17.0.12",
     "protoc-gen-ts": "^0.3.9",
     "typescript": "^4.3.4"
   }

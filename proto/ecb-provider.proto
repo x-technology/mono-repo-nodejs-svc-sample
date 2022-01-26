@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "currency-provider.proto";
+
+package ecbProvider;
+
+service EcbProvider {
+  rpc GetRates(currencyProvider.GetRatesRequest) returns (currencyProvider.GetRatesResponse) {}
+}
+

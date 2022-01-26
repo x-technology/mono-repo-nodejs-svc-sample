@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package currencyConverter;
+
+service CurrencyConverter {
+  rpc Convert(ConvertRequest) returns (ConvertResponse) {}
+}
+
+message ConvertRequest {
+  string sellCurrency = 1;
+  string buyCurrency = 2;
+  double amount = 3;
+}
+
+message ConvertResponse {
+  string sellCurrency = 1;
+  string buyCurrency = 2;
+
+  double conversionRate = 3;
+}
+

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "currency-provider.proto";
+
+package cryptoCompareProvider;
+
+service CryptoCompareProvider {
+  rpc GetRates(currencyProvider.GetRatesRequest) returns (currencyProvider.GetRatesResponse) {}
+}
+
