@@ -16,7 +16,12 @@ message Prices {
 }
 
 service HistoryData {
+  rpc get(Date) returns (Price);
   rpc list(Empty) returns (Prices);
+  rpc listStream(Empty) returns (stream Price);
 }
 
 message Empty {}
+message Date {
+  string Date = 1;
+}
