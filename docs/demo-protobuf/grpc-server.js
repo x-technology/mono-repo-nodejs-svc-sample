@@ -11,12 +11,39 @@ const prices = require('./prices.json')
 
 const list = (call, callback) => {
   console.log(call)
-  callback(null, { prices })   
+  callback(null, { prices })
+}
+
+const listStream = (call, callback) => {
+  console.log(call)
+
+  prices.forEach(price => {
+    call.write(price);
+  })
+  call.end()
+}
+
+const get = (call, callback) => {
+  console.log(call)
+  const { request: { Date } } = call
+
+  const found = prices.find(price => (
+    price.Date === Date
+  ));
+
+  if (!found) {
+    callback({ message: "not-found"}, null)
+    return;
+  }
+
+  callback(null, found)
 }
 
 const server = new grpc.Server()
 server.addService(proto.bitcoinPrices.HistoryData.service, {
-  list, 
+  get, 
+  list,
+  listStream,
 })
 
 server.bindAsync('0.0.0.0:8001', grpc.ServerCredentials.createInsecure(), (error, port) => {
