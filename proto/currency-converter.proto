@@ -9,13 +9,16 @@ service CurrencyConverter {
 message ConvertRequest {
   string sellCurrency = 1;
   string buyCurrency = 2;
-  double amount = 3;
+  double sellAmount = 3;
 }
 
 message ConvertResponse {
-  string sellCurrency = 1;
-  string buyCurrency = 2;
+  double sellAmount = 1;
+  string sellCurrency = 2;
 
-  double conversionRate = 3;
+  double buyAmount = 3;
+  string buyCurrency = 4;
+
+  double conversionRate = 5;
 }
 

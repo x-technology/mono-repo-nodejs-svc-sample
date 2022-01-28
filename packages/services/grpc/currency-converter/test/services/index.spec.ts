@@ -29,7 +29,7 @@ describe('currencyConverter', () => {
               currency: 'AUD',
               rate: 1.5774,
             }),
-          ]
+          ],
         }))
         .mockResolvedValueOnce(new currencyProvider.GetRatesResponse({
           baseCurrency: 'USD',
@@ -42,19 +42,21 @@ describe('currencyConverter', () => {
               currency: 'BTC',
               rate: 0.000032,
             }),
-          ]
+          ],
         }));
 
       const response = await client.Convert(new currencyConverter.ConvertRequest({
-        amount: 73.45,
-        sellCurrency: 'ETH',
-        buyCurrency: 'AUD',
+        sellAmount: 100,
+        sellCurrency: 'USD',
+        buyCurrency: 'GBP',
       }));
 
       expect(response.toObject()).toEqual({
-        conversionRate: 0.013614703880190605,
-        buyCurrency: 'AUD',
-        sellCurrency: 'ETH',
+        buyAmount: 74.67,
+        buyCurrency: 'GBP',
+        sellAmount: 100,
+        sellCurrency: 'USD',
+        conversionRate: 0.7468,
       });
     });
   });
