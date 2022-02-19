@@ -11,8 +11,15 @@
     "eslint-plugin-react": "^7.24.0",
     "lerna": "^4.0.0"
   },
+  "scripts": {
+    "bootstrap:common": "hygen common new",
+    "bootstrap:service": "hygen service new"
+  },
   "workspaces": [
     "packages/common/*",
     "packages/services/grpc/*"
-  ]
+  ],
+  "dependencies": {
+    "hygen": "^6.1.0"
+  }
 }
