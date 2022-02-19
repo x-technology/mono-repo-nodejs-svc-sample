@@ -33,3 +33,7 @@ dist/
 .DS_Store
 
 cockroach-data
+#demo
+docs/demo-protobuf/experiments/**
+docs/demo-protobuf/prices.json
+docs/demo-protobuf/prices_pb.js

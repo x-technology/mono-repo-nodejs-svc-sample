@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "protoc --js_out=import_style=commonjs,binary:. prices.proto"
+    "1. download prices": "node index.js",
+    "2. generate protobuf runtime": "protoc --js_out=import_style=commonjs,binary:. prices.proto",
+    "3. run protobuf transformation": "node index.js",
+    "4. start grpc server": "node grpc-server.js",
+    "5. start grpc client": "node grpc-client.js"
   },
   "keywords": [],
   "author": "",
