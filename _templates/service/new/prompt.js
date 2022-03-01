@@ -12,7 +12,12 @@ module.exports = [
     {
         type: 'input',
         name: 'service',
-        message: 'Please define service name:'
+        message: 'Please define proto service name:'
+    },
+    {
+        type: 'input',
+        name: 'package',
+        message: 'Please define proto package name:'
     },
     {
         type: 'input',

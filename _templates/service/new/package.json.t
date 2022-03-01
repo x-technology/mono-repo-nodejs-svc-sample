@@ -6,7 +6,7 @@ to: packages/services/grpc/<%= name %>/package.json
   "name": "@grpc/<%= name %>",
   "version": "1.0.0",
   "author": "<%= author %>",
-  "description": "This is a Europe Central Bank rates provider",
+  "description": "",
   "license": "MIT",
   "engines": {
     "node": ">= 10.13 <=16"

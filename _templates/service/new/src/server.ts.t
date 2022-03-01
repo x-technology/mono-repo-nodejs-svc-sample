@@ -6,7 +6,7 @@ import { Server, LoadProtoOptions, currencyProvider } from '@common/go-grpc';
 const { PORT = 50051 } = process.env;
 const protoOptions: LoadProtoOptions = {
   path: `${__dirname}/../../../../../proto/<%= proto %>`,
-  package: '<%= service %>',
+  package: '<%= package %>',
   service: '<%= service %>',
 };
 
