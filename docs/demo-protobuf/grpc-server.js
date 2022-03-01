@@ -17,10 +17,15 @@ const list = (call, callback) => {
 const listStream = (call, callback) => {
   console.log(call)
 
-  prices.forEach(price => {
-    call.write(price);
+  prices.forEach((price, index) => {
+    setTimeout(() => {
+      call.write(price);
+    }, 500 * index)
   })
-  call.end()
+
+  setTimeout(() => {
+    call.end()
+  }, 500 * prices.length)
 }
 
 const get = (call, callback) => {
